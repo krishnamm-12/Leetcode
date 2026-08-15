@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int trap(vector<int>& height) {
+        int n=height.size(),trap=0;
+        // previous greatest element array 
+        int prev[n];
+        prev[0]=-1;
+        int max=height[0];
+        for(int i=1;i<n;i++){
+            prev[i]=max;
+            if(max<height[i]) max=height[i];
+        }
+       
+       // next greatest element array 
+       prev[n-1]=-1;
+       max=height[n-1];
+       for(int i=n-2;i>=0;i--){
+        if(max<prev[i]) prev[i]=max;
+
+        if(max<height[i]) max=height[i];
+       }
+
+       for(int i=1;i<n-1;i++){
+            if(prev[i]>height[i]){
+            trap+=(prev[i]-height[i]);
+            }
+        }
+       
+       return trap;
+    }
+};
