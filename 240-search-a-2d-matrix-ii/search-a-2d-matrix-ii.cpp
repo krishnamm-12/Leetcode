@@ -8,7 +8,7 @@ public:
         while(row<n && col>=0){
             if(m1[row][col]==target) return true;
             else if(m1[row][col]<target) row++;
-            else if(m1[row][col]>target) col--;
+            else col--;
 
         }
         return false;
