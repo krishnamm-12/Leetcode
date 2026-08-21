@@ -7,9 +7,8 @@ public:
         string t=strs[strs.size()-1];
         string p;
         for(int i=0;i<s.size();i++){
-            if(s[i]!=t[i]) return p;
+            if(s[i]!=t[i]) break;
             else p+=s[i];
-
         }
         return p;
     }
