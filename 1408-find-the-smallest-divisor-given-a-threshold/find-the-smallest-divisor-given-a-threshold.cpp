@@ -8,6 +8,8 @@ int div_result(vector<int>& nums,int mid){
      return sum;
 }
     int smallestDivisor(vector<int>& nums, int threshold) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         int mx=*max_element(nums.begin(),nums.end());
         int lo=1,hi=mx,ans=INT_MAX;
         while(lo<=hi){
