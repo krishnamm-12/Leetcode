@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<vector<int>> subsets(vector<int>& nums) {
         int n=nums.size();
-        int total_subset=pow(2,n);
+        int total_subset=1<<n;
         vector<vector<int>>v;
         for(int i=0;i<total_subset;i++){
             vector<int>temp;
