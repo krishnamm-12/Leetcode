@@ -10,7 +10,7 @@ public:
                  sum+=weights[s[j]-'a'];
             }
             sum=sum%26;
-            ans=ans+char('a'+(25-sum));
+            ans.push_back(char('a'+(25-sum)));
         }
         return ans;
     }
