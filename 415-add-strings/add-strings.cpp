@@ -1,48 +1,35 @@
 class Solution {
 public:
-    string addStrings(string n1, string n2) {
-        int n=n1.size(),m=n2.size();
-        int mx,mn,cr=0,sum;
-        mn=min(n,m)-1;
-        mx=max(n,m)-1;
-        string add="";
-        while(mn>=0){
-            if(n>m){
-             sum=(n1[mx]-'0')+(n2[mn]-'0')+cr;
-             cr=sum/10;
-             char c='0'+ sum%10;
-             add=c+add;
-            }
-            else{
-             sum=(n2[mx]-'0')+(n1[mn]-'0')+cr;
-             cr=sum/10;
-             char c='0'+ sum%10;
-             add=c+add;
-            }
-             mn--;
-             mx--;
+string add(string num1, string num2){
+    int idx1=num1.size()-1,idx2=num2.size()-1;
+    string ans;
+    int carry=0,sum;
+    while(idx1>=0){
+        sum=(num1[idx1]-'0')+(num2[idx2]-'0')+carry;
+        carry=sum/10;
+        char ch='0'+sum%10;
+        ans+=ch;
+        idx1--;
+        idx2--;
+    }
+    while(idx2>=0){
+        sum=(num2[idx2]-'0')+carry;
+        carry=sum/10;
+        char ch='0'+sum%10;
+        ans+=ch;
+        idx2--;
+    }
+    if(carry){
+        ans+='1';
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
+    string addStrings(string num1, string num2) {
+        if(num1.size()<num2.size()){
+            return add(num1,num2);
         }
-        while(mx>=0){
-            if(n>m){
-             sum=(n1[mx]-'0')+cr;
-             cr=sum/10;
-             char c='0'+ sum%10;
-             add=c+add;
-      
-            }
-            else{
-            sum=(n2[mx]-'0')+cr;
-             cr=sum/10;
-             char c='0'+ sum%10;
-             add=c+add;
-            
-            }
-            mx--;
-        }
-        if(cr){
-           
-            add='1'+add;
-        }
-        return add;
+        else return add(num2,num1);
+    
     }
 };
