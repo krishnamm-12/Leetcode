@@ -6,9 +6,11 @@ public:
         for(int i=0;i<n;i++ ){
          if(s[i]=='A'||s[i]=='E'|| s[i]=='I'|| s[i]=='O'|| s[i]=='U'){
             upper[s[i]-'A']++;
+            s[i]='#';
          }
          if(s[i]=='a'||s[i]=='e'|| s[i]=='i'|| s[i]=='o'|| s[i]=='u'){
             lower[s[i]-'a']++;
+            s[i]='#';
          }
         }
         string ans;
@@ -26,15 +28,15 @@ public:
               lower[i]--;
             }
         }
-        int idx=0;
-        for(int i=0;i<n;i++){
-            if(s[i]=='A'||s[i]=='E'|| s[i]=='I'|| s[i]=='O'|| s[i]=='U' || s[i]=='a'||s[i]=='e'|| s[i]=='i'|| s[i]=='o'|| s[i]=='u' ){
-                s[i]=ans[idx];
-                idx++;
-                if(idx==ans.size()) break;
+        int first=0,second=0;
+        while(first<ans.size()){
+            if(s[second]=='#'){
+                s[second]=ans[first];
+                first++;
             }
-            
+            second++;
         }
+          
         return s;
     }
 };
